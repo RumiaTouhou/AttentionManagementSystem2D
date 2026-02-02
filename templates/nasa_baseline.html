@@ -1,0 +1,92 @@
+{% extends "survey_base.html" %}
+
+{% block page_title %}Workload and experience in the game without AMS{% endblock %}
+
+{% block survey_intro %}
+  <p>
+    On this page you rate how you experienced the game without the Attention Management System, which means the block where you decided all switches yourself.
+  </p>
+
+  <p>
+    Please answer each question by choosing a number from 1 to 7, where 1 always means a very low value and 7 always means a very high value, and where intermediate numbers represent intermediate levels.
+  </p>
+{% endblock %}
+
+{% block survey_fields %}
+  <p>
+    <strong>Mental demand</strong><br>
+    <label for="mental_demand">How mentally demanding was the task in the game without AMS?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="mental_demand" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Physical demand</strong><br>
+    <label for="physical_demand">How physically demanding was the task in the game without AMS?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="physical_demand" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Temporal demand</strong><br>
+    <label for="temporal_demand">How hurried or rushed did the pace of the game feel without AMS?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="temporal_demand" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Performance</strong><br>
+    <label for="self_performance">How successful do you think you were in accomplishing the task without AMS?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="self_performance" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Effort</strong><br>
+    <label for="effort">How hard did you have to work to achieve your performance in the game without AMS?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="effort" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Frustration</strong><br>
+    <label for="frustration">How insecure, discouraged, irritated, stressed, or annoyed did you feel during the game without AMS?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="frustration" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Overall experience</strong><br>
+    <label for="overall_experience">Overall, how much did you like playing the game in the mode without AMS assistance?</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="overall_experience" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+{% endblock %}

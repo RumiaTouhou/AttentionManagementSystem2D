@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section>
+    {% block survey_intro %}{% endblock %}
+
+    <form method="post">
+      <fieldset style="margin-top: 16px; padding: 8px; border: 1px solid #444;">
+        <legend>Study metadata</legend>
+
+        <p>
+          Please check the participant ID and date, and adjust them if needed, so that the stored data match the current session.
+        </p>
+
+        <p>
+          <label for="participant_id">Participant ID:</label>
+          <input
+            type="number"
+            id="participant_id"
+            name="participant_id"
+            value="{{ participant_id if participant_id is not none else '' }}"
+            min="0"
+            {% if metadata_confirmed %}readonly{% endif %}
+          >
+        </p>
+
+        <p>
+          <label for="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            value="{{ date }}"
+            {% if metadata_confirmed %}readonly{% endif %}
+          >
+        </p>
+
+        <p>
+          Block order (condition) is shown as: <strong>{{ condition if condition else "not set yet" }}</strong>,  
+          and mode for this page is: <strong>{{ mode if mode else "not specified" }}</strong>.  
+          These values are stored by the controller and do not usually need to be changed by the experimenter.
+        </p>
+      </fieldset>
+
+      <fieldset style="margin-top: 16px; padding: 8px; border: 1px solid #444;">
+        <legend>Questions for this page</legend>
+
+        {% block survey_fields %}
+        {# Each specific survey template will provide its own fields here. #}
+        {% endblock %}
+      </fieldset>
+
+      <p style="margin-top: 16px;">
+        <input type="submit" value="Continue">
+      </p>
+    </form>
+  </section>
+{% endblock %}

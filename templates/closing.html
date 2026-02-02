@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_title %}End of the session{% endblock %}
+
+{% block content %}
+<section>
+  <p style="text-align: center; margin: 16px 0;">
+    <img src="{{ url_for('pics', filename='Author.png') }}" alt="Author watermark" style="max-width: 200px; height: auto;">
+  </p>
+
+  <p>
+    Thank you for taking part in this study about Attention Management Systems and multitasking in the plate balancing game. Your game data and questionnaire responses have been recorded with a participant ID and date, and your name is not stored in the data files.
+  </p>
+
+  <p>
+    These data will be used only for scientific analysis and for reporting results in a form where individual participants cannot be identified. If you have any questions about the study or about how your data are used, you can ask the experimenter now.
+  </p>
+</section>
+{% endblock %}

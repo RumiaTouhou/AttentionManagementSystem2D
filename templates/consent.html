@@ -1,0 +1,38 @@
+{% extends "survey_base.html" %}
+
+{% block page_title %}Consent to participate{% endblock %}
+
+{% block survey_intro %}
+  <p>
+    Please read the information on this page carefully before you decide whether you want to participate in this study. If anything is unclear, you can ask the experimenter to explain it before you continue.
+  </p>
+
+  <p>
+    In this study you will play a plate balancing game using a gamepad, in which you control the tilt of plates and try to keep balls on the plates, while in different parts of the study you either decide switches between plates yourself or follow switches that are suggested by an Attention Management System.
+  </p>
+
+  <p>
+    The study is designed to measure how an Attention Management System based on reinforcement learning can help people manage their attention across several tasks, and it is not designed to test or grade you as an individual. In addition to the game, you will answer several short questionnaires about your background, your gaming experience, your perceived workload, and your experience with the Attention Management System.
+  </p>
+
+  <p>
+    Your participation in this study is voluntary, which means that you can stop participating at any time without giving a reason, and in this case we will stop the study session. If you decide that you want us to remove all data that we collected from you, you can tell the experimenter, and we will delete your game data and questionnaire answers from our files.
+  </p>
+
+  <p>
+    During the study we record game-related data such as plate and ball positions, timings of your actions and switches, and episode durations, and we also record your questionnaire responses. We store these data together with your participant ID and study date, but we do not store your name in the data files, and we will use the data only for scientific analysis and for publication in aggregated form where individual participants cannot be identified.
+  </p>
+{% endblock %}
+
+{% block survey_fields %}
+  <p>
+    Please confirm your decision by selecting the option below.
+  </p>
+
+  <p>
+    <label>
+      <input type="radio" name="consent" value="agree" required>
+      I have read the information above and I agree to participate in this study.
+    </label>
+  </p>
+{% endblock %}

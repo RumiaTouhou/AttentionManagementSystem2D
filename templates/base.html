@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Attention Management Study{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #111;
+        color: #f5f5f5;
+      }
+
+      header, main, footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+
+      header {
+        border-bottom: 1px solid #333;
+      }
+
+      footer {
+        border-top: 1px solid #333;
+        margin-top: 24px;
+        font-size: 0.9rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 0;
+      }
+
+      p {
+        line-height: 1.5;
+      }
+
+      .meta-info {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-top: 4px;
+      }
+
+      .footer-section {
+        margin-top: 16px;
+        padding-top: 8px;
+      }
+
+      .footer-section h2 {
+        font-size: 1.0rem;
+        margin-bottom: 4px;
+      }
+
+      .footer-section form {
+        display: inline-block;
+        margin-right: 24px;
+        margin-top: 4px;
+      }
+
+      label {
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="date"] {
+        padding: 2px 4px;
+        font-size: 0.9rem;
+      }
+
+      input[type="submit"],
+      button {
+        padding: 4px 10px;
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .footer-note {
+        margin-top: 4px;
+        color: #aaa;
+      }
+
+      .inline-input {
+        margin-right: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>{% block page_title %}Attention Management Study{% endblock %}</h1>
+      <div class="meta-info">
+        Participant ID: {{ participant_id if participant_id is not none else "" }},
+        Date: {{ date }},
+        Block order (condition): {{ condition if condition else "not set yet" }},
+        Mode: {{ mode if mode else "not specified" }}
+      </div>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+      <div class="footer-section">
+        <h2>Force terminate for this study session</h2>
+        <p class="footer-note">
+          This control is for the experimenter, and it removes all data for one participant and returns the system to the start of the study.  
+          The participant should not use this control.
+        </p>
+        <form method="post" action="{{ url_for('force_terminate_route') }}">
+          <label for="terminate_participant_id">Participant ID:</label>
+          <input
+            class="inline-input"
+            type="number"
+            id="terminate_participant_id"
+            name="terminate_participant_id"
+            value="{{ participant_id if participant_id is not none else '' }}"
+            min="0"
+          >
+          <input type="submit" value="Force terminate">
+        </form>
+      </div>
+
+      <div class="footer-section">
+        <h2>Retry one game configuration</h2>
+        <p class="footer-note">
+          This control is for the experimenter, and it deletes game episodes for a specific participant, mode, and number of plates, and then starts a new game session for that configuration.  
+          The participant should not use this control.
+        </p>
+        <iframe name="retry_iframe" style="display:none" aria-hidden="true"></iframe>
+        <form method="post" action="{{ url_for('retry_route') }}" target="retry_iframe">
+          <label for="retry_participant_id">Participant ID:</label>
+          <input
+            class="inline-input"
+            type="number"
+            id="retry_participant_id"
+            name="retry_participant_id"
+            value="{{ participant_id if participant_id is not none else '' }}"
+            min="0"
+          >
+
+          <label for="retry_condition">Mode (N = Baseline, Y = AMS):</label>
+          <input
+            class="inline-input"
+            type="text"
+            id="retry_condition"
+            name="retry_condition"
+            maxlength="3"
+            placeholder="N or Y"
+          >
+
+          <label for="retry_n">Number of plates:</label>
+          <input
+            class="inline-input"
+            type="number"
+            id="retry_n"
+            name="retry_n"
+            min="2"
+            max="12"
+          >
+
+          <input type="submit" value="Retry this configuration">
+        </form>
+      </div>
+    </footer>
+  </body>
+</html>

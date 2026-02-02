@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block page_title %}Data integrity check{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    This page summarizes the data that have been recorded for the current participant, so that the experimenter can check whether all planned parts of the study are complete.
+  </p>
+
+  <p>
+    The summary below indicates for each mode and each number of plates whether two valid game episodes have been recorded, and it also shows whether the questionnaires for workload, experience, and AMS use have been completed. If any cell is marked as incomplete, the experimenter can decide to repeat that part of the study before the session is closed.
+  </p>
+
+  <p>
+    This page is mainly for the experimenter, and the participant does not need to perform any action here.
+  </p>
+
+  <h2>Game episodes per mode and number of plates</h2>
+
+  <table border="1" cellpadding="4" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Number of plates (N)</th>
+        <th>Baseline episodes complete</th>
+        <th>AMS episodes complete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for n in baseline_episodes.keys()|sort %}
+      <tr>
+        <td>{{ n }}</td>
+        <td>
+          {% if baseline_episodes[n] %}
+            complete
+          {% else %}
+            incomplete
+          {% endif %}
+        </td>
+        <td>
+          {% if ams_episodes[n] %}
+            complete
+          {% else %}
+            incomplete
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Questionnaire completion</h2>
+  <ul>
+    <li>Demographics questionnaire: {{ "complete" if demographics_done else "incomplete" }}</li>
+    <li>Gaming experience questionnaire: {{ "complete" if gaming_done else "incomplete" }}</li>
+    <li>Consent record: {{ "complete" if consent_done else "incomplete" }}</li>
+    <li>NASA-TLX for Baseline: {{ "complete" if nasa_baseline_done else "incomplete" }}</li>
+    <li>NASA-TLX for AMS: {{ "complete" if nasa_ams_done else "incomplete" }}</li>
+    <li>AMS experience questionnaire: {{ "complete" if ams_experience_done else "incomplete" }}</li>
+  </ul>
+
+  <form method="post" style="margin-top: 24px;">
+    <p>
+      If the experimenter is satisfied that the data are complete, please continue to the closing page.
+    </p>
+    <input type="submit" value="Continue to closing page">
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block page_title %}Practice with AMS assistance{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    You will now practice the plate balancing game with the Attention Management System, which means that the AMS decides when to switch from one plate to another and shows you prompts that indicate the next plate.
+  </p>
+
+  <p>
+    During this practice phase you should focus on following the AMS prompts, which means that you watch for the pink background on the plate you are leaving, the lighter yellow alert color on the target plate, and the audio signal, and you then continue to control the new active plate using the gamepad joysticks. You can start a practice round by pressing <strong>BACKSPACE</strong> on the keyboard or the <strong>left trigger (L2)</strong> on the gamepad, and after a practice round ends you can restart or exit using the controls shown on the “Game Over” screen.
+  </p>
+
+  <p>
+    These practice rounds are not part of the main data collection, and the experimenter will tell you when the practice is sufficient and when the study will move on to the main AMS-assisted block.
+  </p>
+
+  <form method="post" style="margin-top: 24px;">
+    <button type="submit" name="action" value="start_practice">Start a practice round</button>
+    <button type="submit" name="action" value="continue" style="margin-left: 12px;">Continue to main block with AMS</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block page_title %}Introduction to this study{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    This study investigates an Attention Management System, which we call AMS, which is a computer system that observes a user who works on several tasks and decides when the user should switch attention from one task to another, so that multitasking becomes easier and interruptions become less disruptive.
+  </p>
+
+  <p>
+    In this study the AMS uses reinforcement learning, which means that the AMS learned a switching strategy in a simulated game environment, and during this learning process the AMS received rewards for switching at moments that were helpful for task performance and received low rewards for switching at moments that were unhelpful.
+  </p>
+
+  <p>
+    The research that you are taking part in extends an earlier study that used an AMS in a simpler game with only two tasks, which in that case were two balancing plates. In this extended study we examine how the AMS behaves when the number of concurrent tasks increases, which means that the number of plates can range from 2 up to 9, and we compare this AMS condition to a baseline condition without AMS support.
+  </p>
+
+  <p>
+    The main objectives of this study are to measure how the AMS changes human performance as the number of plates increases, to measure how participants experience workload and effort in each condition, and to analyze which switching patterns the AMS and human participants use at different levels of task complexity.
+  </p>
+
+  <p>
+    The game that you will play is a plate balancing game, in which several circular plates appear on the screen and each plate carries one ball. You control one plate at a time with a gamepad joystick, and by tilting the plate you try to keep the ball near the center so that the ball remains on the plate and does not leave the usable area. Only one plate is controllable at each moment, while the physical motion of all balls continues on all plates, therefore you need to switch control between plates from time to time in order to prevent balls from leaving their plates.
+  </p>
+
+  <p>
+    In one part of the experiment you will decide by yourself when to switch between plates, and this part is the baseline condition without AMS. In another part of the experiment the AMS will decide when to switch from one plate to another and will indicate these switches with visual and audio cues, while you still control the active plate with the joystick, and this part is the AMS-assisted condition.
+  </p>
+
+  <p>
+    The full session includes short background questions, a short practice phase, one block of trials without AMS, one block of trials with AMS, and short questionnaires after each block, and in most cases the entire session will last about 70 to 80 minutes. On the next pages you will see several short questions about your background and experience, which help us interpret the results of the study.
+  </p>
+
+  <form method="post" style="margin-top: 24px;">
+    <input type="submit" value="Continue">
+  </form>
+</section>
+{% endblock %}

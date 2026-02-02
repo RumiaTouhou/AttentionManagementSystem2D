@@ -1,0 +1,65 @@
+{% extends "survey_base.html" %}
+
+{% block page_title %}Experience with the AMS{% endblock %}
+
+{% block survey_intro %}
+  <p>
+    This page asks about your experience with the Attention Management System, which includes how helpful it felt, how clear its prompts were, and whether you would like to use such assistance in similar tasks.
+  </p>
+
+  <p>
+    Please answer each statement by choosing a number from 1 to 7, where 1 means you strongly disagree and 7 means you strongly agree.
+  </p>
+{% endblock %}
+
+{% block survey_fields %}
+  <p>
+    <strong>AMS helped performance</strong><br>
+    <label for="ams_helped_performance">The AMS helped me perform better in the game.</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="ams_helped_performance" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Trust in AMS decisions</strong><br>
+    <label for="ams_trust">I trusted the switching decisions made by the AMS.</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="ams_trust" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Clarity of prompts</strong><br>
+    <label for="ams_prompt_clarity">The AMS prompts, including colors and sounds, were clear and easy to follow.</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="ams_prompt_clarity" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Preference for AMS</strong><br>
+    <label for="ams_prefer_over_manual">Overall, I prefer playing with AMS assistance rather than switching between plates manually.</label><br>
+    {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="ams_prefer_over_manual" value="{{ i }}" required>
+        {{ i }}
+      </label>
+    {% endfor %}
+  </p>
+
+  <p>
+    <strong>Optional comments</strong><br>
+    <label for="ams_comments">If you want to share any comments about using the AMS, you can write them here.</label><br>
+    <textarea id="ams_comments" name="ams_comments" rows="4" cols="60"></textarea>
+  </p>
+{% endblock %}

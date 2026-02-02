@@ -1,0 +1,63 @@
+{% extends "survey_base.html" %}
+
+{% block page_title %}Background information{% endblock %}
+
+{% block survey_intro %}
+  <p>
+    This page asks for some basic background information, which helps us describe the group of people who participate in this study. This information is analyzed in aggregated form across participants and is not used to evaluate you as an individual person.
+  </p>
+{% endblock %}
+
+{% block survey_fields %}
+  <p>
+    <label for="age_group">Age group:</label><br>
+    <select id="age_group" name="age_group">
+      <option value="">Please select</option>
+      <option value="18-24">18–24</option>
+      <option value="25-34">25–34</option>
+      <option value="35-44">35–44</option>
+      <option value="45-54">45–54</option>
+      <option value="55+">55+</option>
+      <option value="Prefer not to say">Prefer not to say</option>
+    </select>
+  </p>
+
+  <p>
+    <label for="gender">Gender:</label><br>
+    <select id="gender" name="gender">
+      <option value="">Please select</option>
+      <option value="Woman">Woman</option>
+      <option value="Man">Man</option>
+      <option value="Non-binary / other">Non-binary / other</option>
+      <option value="Prefer not to say">Prefer not to say</option>
+    </select>
+  </p>
+
+  <p>
+    <span>Experience with gamepads or controllers:</span><br>
+
+    <label>
+      <input type="radio" name="gamepad_experience" value="Never used" required>
+      I have never used a gamepad or controller
+    </label><br>
+
+    <label>
+      <input type="radio" name="gamepad_experience" value="Few times">
+      I have used a gamepad or controller a few times
+    </label><br>
+
+    <label>
+      <input type="radio" name="gamepad_experience" value="Occasionally">
+      I use a gamepad or controller occasionally
+    </label><br>
+
+    <label>
+      <input type="radio" name="gamepad_experience" value="Regularly / very comfortable">
+      I use a gamepad or controller regularly and feel very comfortable with it
+    </label>
+  </p>
+
+  <p>
+    At the bottom of the page you can see the participant ID and the date, and you can edit these values if something is incorrect.
+  </p>
+{% endblock %}

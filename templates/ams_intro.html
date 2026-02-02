@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block page_title %}Balancing game with AMS assistance{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    In this part of the study you will play the same plate balancing game, but now with assistance from the Attention Management System, which we call AMS. The AMS observes the state of all plates and balls and decides when you should switch from one plate to another, so that you do not have to decide switching moments yourself.
+  </p>
+
+  <p style="text-align: center; margin: 16px 0;">
+    <img src="{{ url_for('pics', filename='AMS.png') }}" alt="AMS-assisted gameplay screenshot" style="max-width: 100%; height: auto;">
+  </p>
+
+  <p>
+    The basic elements of the game remain the same. The screen shows several circular plates, each plate has one red ball, and you control the tilt of exactly one plate at a time using the gamepad. Your task is again to keep each red ball on its plate for as long as possible by tilting plates and by keeping the balls near the center, because the game ends as soon as any red ball leaves the usable area of its plate. The plate that you are currently controlling has a dark yellow background color, which tells you which plate receives your joystick input, and on this plate you will also see a yellow arrow that shows the current tilt direction and therefore the direction in which the ball will tend to move.
+  </p>
+
+  <p>
+    You still use the gamepad to tilt the currently active plate. You can use either the left joystick or the right joystick to tilt the active plate, and when you push a joystick, the plate tilts in that direction and the red ball moves accordingly. You do not use the keyboard for tilt control or for plate navigation, and you should use only the gamepad joysticks to tilt and the gamepad buttons to follow the AMS prompts.
+  </p>
+
+  <p>
+    You can use both the gamepad and the keyboard to start, restart, or exit the game itself. To <strong>start</strong> a game round, you can press the <strong>BACKSPACE</strong> key on the keyboard or the <strong>left trigger (L2)</strong> on the gamepad. After a game round ends and the “Game Over” screen appears, you can <strong>restart</strong> the game by pressing the <strong>R</strong> key on the keyboard or the <strong>right trigger (R2)</strong> on the gamepad, and you can <strong>exit</strong> the game to return to the study webpage by pressing the <strong>P</strong> key on the keyboard or the <strong>left trigger (L2)</strong> on the gamepad.
+  </p>
+
+  <p>
+    In the AMS-assisted condition you do not decide when to switch between plates, because the AMS takes this role. The AMS chooses a new target plate when it considers a switch to be useful, and this switch is <strong>forced</strong>, which means that you cannot cancel or override the switching decision, and after a short delay, control always moves to the plate that the AMS has chosen. Your task is to keep controlling the currently active plate and to follow the prompts, and you should not look for any button that cancels or changes the AMS choice, because such a button does not exist in this condition.
+  </p>
+
+  <p>
+    When the AMS decides to switch from a source plate to a new target plate, you will see a short prompting sequence. At the start of this sequence, which lasts about a third of a second, the <strong>source plate</strong> that you are about to leave changes its background color to a pink color, and on this pink plate you will see a text label that shows the index of the plate that the AMS wants to select next. At the same time, the <strong>target plate</strong> that you will move to changes its background color to a lighter yellow alert color, which is brighter than the normal dark yellow background, so that this plate becomes visually prominent. An audio cue also plays at this moment, which helps you notice that a switch is about to happen.
+  </p>
+
+  <p>
+    After this short alert period, control switches automatically to the new target plate, which means that your joystick input now tilts that plate, and at this moment the pink color and the text label on the old plate disappear, and the new target plate changes from the lighter yellow alert color back to the normal dark yellow background for an active plate. In this way you always know which plate is currently controlled, and you can always see which plate was the target of the last AMS decision.
+  </p>
+
+  <p>
+    For each level of difficulty, which in this condition is also each number of plates between 2 and 9, we again aim to collect two valid game rounds for later analysis. After each game round ends and the “Game Over” screen appears, you should not press any buttons, and you should wait for the experimenter to decide whether the round counts as a valid episode or whether it should be repeated. The experimenter will handle restarts and exits on the “Game Over” screen, so you do not need to perform these actions yourself.
+  </p>
+
+  <form method="post" style="margin-top: 24px;">
+    <input type="submit" value="Continue to practice with AMS">
+  </form>
+</section>
+{% endblock %}

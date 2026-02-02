@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_title %}Balancing game without assistance{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    In this part of the study you will play the plate balancing game without any assistance from the Attention Management System, which means that you yourself decide which plate to control at each moment and when to switch between plates.
+  </p>
+
+  <p style="text-align: center; margin: 16px 0;">
+    <img src="{{ url_for('pics', filename='baseline.png') }}" alt="Baseline gameplay screenshot" style="max-width: 100%; height: auto;">
+  </p>
+
+  <p>
+    The game shows several circular plates on the screen, and each plate carries one red ball, and you control the tilt of exactly one plate at a time using the gamepad. When you tilt a plate, the red ball on that plate moves because of gravity, and your task is to use the joysticks so that each red ball stays on its plate for as long as possible, which means that you try to keep the ball near the center of the plate and you try to prevent it from moving outside the usable circular area. If any red ball leaves the usable area on its plate, then the game round ends immediately.
+  </p>
+
+  <p>
+    The plate that you are currently controlling has a dark yellow background color, therefore you can always see which plate is active at the moment, and in this case your joystick input will tilt this plate and affect its ball. The yellow arrow drawn on the active plate shows the current tilt direction of this plate, and in this way it also shows the direction in which gravity pulls the ball on that plate, so that you can understand how the ball will tend to move if you do not change the tilt.
+  </p>
+
+  <p>
+    You use the gamepad to decide which plate to control. You can move to a different plate by pressing the directional buttons on the gamepad, which are the buttons on the left side that are arranged as a cross, and you can also use the four main face buttons on the right side of the gamepad to move between plates in a similar way. When you switch to another plate in this way, the dark yellow background moves to that new plate, and from that moment your joystick input will tilt this plate instead.
+  </p>
+
+  <p>
+    You tilt the currently active plate with the joysticks on the gamepad. You can use either the left joystick or the right joystick to tilt the plate, and when you push a joystick in a certain direction, the plate will slowly tilt in this direction, and the yellow arrow will follow this tilt, while the ball on that plate will start to move in response. You do not need to use the keyboard to control the plates, and you should use only the gamepad for plate switching and tilt control.
+  </p>
+
+  <p>
+    You can use both the gamepad and the keyboard to start, restart, or exit the game itself, which is different from switching and tilting the plates. To <strong>start</strong> a game round from the start screen, you can either press the <strong>BACKSPACE</strong> key on the keyboard, or you can press the <strong>left trigger (L2)</strong> on the gamepad. After a game round ends and the “Game Over” screen appears, you can <strong>restart</strong> the game by pressing the <strong>R</strong> key on the keyboard or by pressing the <strong>right trigger (R2)</strong> on the gamepad. From the “Game Over” screen you can <strong>exit</strong> the game and return to the study webpage by pressing the <strong>P</strong> key on the keyboard or by pressing the <strong>left trigger (L2)</strong> on the gamepad.
+  </p>
+
+  <p>
+    For each level of difficulty, which in this case is each number of plates between 2 and 9, we aim to collect two valid game rounds, which we call two valid episodes, for later analysis. After each game round ends and the “Game Over” screen appears, you should not press any buttons yet, and you should wait quietly for the experimenter. The experimenter will decide whether this round counts as a valid episode that we keep for the study, or whether it will be treated as an invalid trial and restarted, therefore you should let the experimenter handle the restart or exit actions after each failure screen.
+  </p>
+
+  <form method="post" style="margin-top: 24px;">
+    <input type="submit" value="Continue to practice without assistance">
+  </form>
+</section>
+{% endblock %}

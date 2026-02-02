@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block page_title %}Start the block with AMS assistance{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    You have finished the practice with AMS assistance, and the study will now start the main block where the Attention Management System helps you by deciding when to switch between plates. In this block you still control the active plate with the gamepad joysticks, but the AMS selects switching moments and shows you prompts that indicate the next plate.
+  </p>
+
+  <p>
+    For each number of plates from 2 up to 9 we again aim to record two valid game rounds, therefore you will play several rounds at each number of plates in the AMS-assisted condition. After each “Game Over” screen appears you should wait for the experimenter, who will decide whether to keep that round as a valid episode or to repeat it.
+  </p>
+
+  <p>
+    When you are ready to begin the main block with AMS assistance, please press the <strong>Start</strong> button on this page, and then use <strong>BACKSPACE</strong> on the keyboard or the <strong>left trigger (L2)</strong> on the gamepad to start each game round when the AMS game window is open.
+  </p>
+
+  <form method="post" style="margin-top: 24px;">
+    <input type="hidden" name="participant_id" value="{{ participant_id }}">
+    <input type="submit" value="Start main block with AMS assistance">
+  </form>
+
+</section>
+{% endblock %}

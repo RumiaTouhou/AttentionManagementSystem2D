@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block page_title %}Start the block without assistance{% endblock %}
+
+{% block content %}
+<section>
+  <p>
+    You have finished the practice without assistance, and the study will now start the main block where the game runs without the Attention Management System. In this block you decide which plate to control and when to switch between plates, and you use the gamepad joysticks and gamepad buttons as described earlier.
+  </p>
+
+  <p>
+    For each number of plates from 2 up to 9 we aim to record two valid game rounds, therefore you will play several rounds at each number of plates. After each “Game Over” screen appears you should wait for the experimenter, who will decide whether to keep that round as a valid episode or to repeat it.
+  </p>
+
+  <p>
+    When you are ready to begin the main block without assistance, please press the <strong>Start</strong> button on this page, and then use <strong>BACKSPACE</strong> on the keyboard or the <strong>left trigger (L2)</strong> on the gamepad to start each game round when the game window is open.
+  </p>
+
+  <form method="post" style="margin-top: 24px;">
+    <input type="hidden" name="participant_id" value="{{ participant_id }}">
+    <input type="submit" value="Start main block without assistance">
+  </form>
+
+</section>
+{% endblock %}
