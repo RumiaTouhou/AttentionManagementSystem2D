@@ -209,6 +209,37 @@ Due to this, the system adds safety layers, including:
 
 These layers are described in code in `PlateGame.py` and `AMSCore.py`.
 
+### Existing findings
+
+**Note: below are the findings when conducting user study with a less robust AMS model, not this current implementation. The "mute barrier" problems addressed below no longer exist in our current model.**
+
+
+- The evaluation identified two distinct performance regimes: an "effective regime" for moderate task counts N ≤ 5 where the system improved performance, and a "failure regime" for high task counts N ≥ 6 where performance collapsed. **(Now resolved. The current AMS model can perform robustly across N = 2 to N = 9)**
+
+- In the effective regime (up to five tasks), the AMS-assisted condition outperformed the self-managed baseline, successfully reducing the rate of performance degradation as the number of tasks increased.
+
+
+- Within the effective regime, the AMS improved performance by adopting a proactive strategy that increased the pace of switching (shorter dwell times) compared to the manual baseline.
+
+
+- The AMS tended to switch into target tasks earlier (preventive entry) while they were at lower risk levels, whereas human users in the baseline condition tended to switch later when the target tasks had reached higher risk levels.
+
+
+- At higher task counts N ≥ 6, the system encountered a critical stability limit termed the "mute barrier," where the supervisor stopped scheduling switches entirely, leading to long periods of inactivity.
+ 
+- This failure mode was pervasive at high task counts; specifically at N = 6, 100% of recorded AMS episodes exhibited "noticeable mute" behavior where the system ceased switching for over 5 seconds.
+ 
+- In the failure regime, episodes ended predominantly due to "starvation/neglect," meaning the system locked onto one controlled task while allowing unattended tasks to drift into failure.
+ 
+- Despite the increased switching frequency in the effective regime, the users' post-switch reaction times did not increase, indicating that the AMS strategy remained compatible with human cognitive limits.
+
+- The study confirmed that training the supervisor against a simulated "Cognitive Gameplay Agent" (which modeled partial observability and motor inertia) produced a policy that was usable by humans, unlike policies trained against unconstrained agents.
+
+### What to do next
+
+- Validate the current revised model with real participants.
+- Rerun the analysis with the logs collected with revised model to demonstrate the effectiveness of the new AMS design, and justify AMS could improve user's multitasking performance effectively when N > 2. 
+
 ---
 
 ## Training the AMS
