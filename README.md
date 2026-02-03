@@ -5,7 +5,7 @@ This repository provides a research toolkit for studying **task switching** with
 The design is based on the research paper **“Supporting Task Switching with Reinforcement Learning”** by Alexander Lingler et al. (ACM CHI 2024):  
 https://dl.acm.org/doi/10.1145/3613904.3642063
 
-In that paper, the AMS observes the state of each task and then decides when to switch the active task, while the user only controls the currently active task, so that overall task performance can improve compared to manual switching.
+In that paper, the AMS observes the state of each task and then decides when to switch the active task, while the user only controls the currently active task, so that overall task performance can improve compared to manual switching. However, the AMS framework it proposed was only evaluated in tasks where number of subtasks = 2, and the performance is limited if directly extending to tasks where N>2.
 
 ---
 
@@ -22,8 +22,10 @@ This repository reimplements the original idea in a new environment, and the rea
    In this implementation, the game is 2D, so that the visual input is simpler and more consistent.
 
 3. **Easier maintenance and integration for future studies**  
-   The original project uses an older Unity editor version (Unity 2021.3.45f1), and it may not open cleanly in newer Unity versions.  
+   The original project uses an older Unity editor version (Unity 2021.3.45f1), and it cannot open cleanly in newer Unity versions. 
    In this implementation, the game is written in Python with Pygame, so that it is easier to integrate new models, new logging, and new study logic.
+
+For the adjustment I made to the AMS model, please refer to **"How this AMS design differs from the original paper"** section of this README.
 
 ---
 
@@ -35,6 +37,30 @@ This repository reimplements the original idea in a new environment, and the rea
 - A round ends when **any** ball crosses the boundary of its plate.
 
 This setup creates a continuous multitasking problem, where switching too slowly causes neglected plates to fail, while switching too often can reduce control quality.
+
+---
+
+## Game interface
+
+![Game interface](images/GameInterface.png)
+
+- Player have to keep switching and balancing between plates to ensure the red ball not reaching the edge of the plate.  
+- Yellow arrow: plate tilt direction and magnitude
+- Plate inner grids: tilt magnitude reference, 15 degrees, 30 degrees, 45 degrees
+- Yellow background: the plate user is currently controlling
+
+## AMS prompting sequence
+
+![Prompting](images/Prompting.png)
+
+1. User controlling a plate (in dark yellow).
+2. AMS suggest a new plate switch to. The AMS play a short sound. The current controlled plate turn pink and the target plate turn light yellow. The current controlled plate display the layout coordination of the target plate it will switch to. The user can still control the current plate at this moment.
+3. The target plate become the new plate user will control. The background of the new plate turn dark yellow, and the original plate it switched from turn black as it is no longer in control. 
+
+---
+## Game manipulation 
+
+![Control](images/Control.png)
 
 ---
 
@@ -143,7 +169,7 @@ This design matches the idea that a switch is not instantaneous, and the user ne
 
 ## How this AMS design differs from the original paper
 
-This implementation follows the same high-level idea, while several design decisions are different due to the need to support N>2.
+This implementation follows the same high-level idea, while several design decisions are different due to the essential needs to support N>2.
 
 ### 1) 2D physics and engineered observations
 
@@ -164,7 +190,7 @@ The observation is padded to `N_max = 12`, and unused slots are filled with zero
 The original SupervisorAgentV1 uses a timing-based logistic reward.
 In this implementation, the training reward includes timing terms and additional shaping terms, such as hazard reduction, neglect penalties, coverage shaping, and N-scaled penalties, so that PPO training remains stable when N is large.
 
-### 3) Safety layers are added to improve robustness when N>2
+### 3) Safety layers are added to ensure robustness when N>2
 
 When N increases, the probability that at least one plate becomes urgent increases, and small policy errors can end the episode quickly.
 Due to this, the system adds safety layers, including:
