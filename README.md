@@ -31,12 +31,18 @@ For the adjustment I made to the AMS model, please refer to **"How this AMS desi
 
 ## What the game is
 
+Same with the design of the original paper:
 - The game contains **N plates** (2 to 12).
-- Each plate has one ball, and the ball moves due to plate tilt, gravity, drag, and an anti-stall rule.
+- Each plate has one ball, and the ball moves due to initial plate tilt, gravity, drag, and an anti-stall rule.
 - At any time, the player can control **only one plate**, while the other plates continue to evolve.
 - A round ends when **any** ball crosses the boundary of its plate.
+- The drag increases linearly as time grows, making plates more slippery and harder to control.
 
 This setup creates a continuous multitasking problem, where switching too slowly causes neglected plates to fail, while switching too often can reduce control quality.
+
+Furthermore, the game difficulty was slightly decreased (survival time around 175s in single plate game) in order to collect more meaningful user behavior logs in longer gameplay episodes.
+
+A DEMO video exist in project root folder as a demonstration of game mechanism and robustness of AMS I proposed.
 
 ---
 
